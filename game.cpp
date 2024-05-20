@@ -1,18 +1,20 @@
 #include "Game.h"
 
-sf::CircleShape circle(2.0f, 360u);
+sf::Texture texture;
+
 
 void Begin(const sf::Window& window)
 {
-	circle.setOrigin(sf::Vector2f(circle.getRadius(), circle.getRadius()));
-	circle.setFillColor(sf::Color::Blue);
+	if (!texture.loadFromFile("yuki.jpeg"))
+		exit(-1);
 }
 
 void Update(float deltaTime)
 {
 
 }
-void Render(sf::RenderWindow& window)
+
+void Render(Renderer& renderer)
 {
-	window.draw(circle);
+	renderer.Draw(texture, sf::Vector2f(), sf::Vector2f(4.75f, 4.75f));
 }

@@ -23,11 +23,14 @@ int main()
 #include <SFML/Graphics.hpp>
 #include "game.h"
 #include "camera.h"
+#include "renderer.h"
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(1200, 900), "Mario World");
     sf::Clock deltaClock;
     Camera camera;
+    Renderer renderer(window);
+    
 
 
     Begin(window);
@@ -45,10 +48,8 @@ int main()
         window.setView(camera.GetView(window.getSize()));
         Update(deltaTime);
        
-        window.clear();
-
-        Render(window);
-
+        window.clear(sf::Color::Blue);
+        Render(renderer);
         window.display();
 
     }
