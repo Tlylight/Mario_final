@@ -137,6 +137,7 @@
   <ItemGroup>
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="Mario.cpp" />
     <ClCompile Include="renderer.cpp" />
     <ClCompile Include="Resouces.cpp" />
@@ -144,6 +145,7 @@
   <ItemGroup>
     <ClInclude Include="camera.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="renderer.h" />
     <ClInclude Include="Resouces.h" />
   </ItemGroup>
