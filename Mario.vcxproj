@@ -150,6 +150,7 @@
     <ClInclude Include="Resouces.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="map.png" />
     <Image Include="yuki.jpeg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

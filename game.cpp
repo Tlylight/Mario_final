@@ -3,7 +3,7 @@
 #include "Map.h"
 #include <filesystem>
 
-Map map;
+Map map(16.0f);
 Camera camera(320.0f);
 
 void Begin(const sf::Window& window)
@@ -17,7 +17,10 @@ void Begin(const sf::Window& window)
 				file.path().string());
 		}
 	}
-	map.CreateCheckerboard(10, 10);
+	sf::Image image;
+	image.loadFromFile("map.png");
+	map.CreateFromImage(image);
+	//map.CreateCheckerboard(10, 10);
 	camera.position = sf::Vector2f(160.0f, 160.0f);
 }
 

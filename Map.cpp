@@ -34,10 +34,26 @@ void Map::Draw(Renderer& renderer)
 		{
 			if (cell)
 			{
-				renderer.Draw(Resouces::textures["sopdog.jpg"], sf::Vector2f(cellsize * x + cellsize / 2.0f, cellsize *y + cellsize / 2.0f), sf::Vector2f(cellsize, cellsize));
+				renderer.Draw(Resouces::textures["brick.png"], sf::Vector2f(cellsize * x + cellsize / 2.0f, cellsize *y + cellsize / 2.0f), sf::Vector2f(cellsize, cellsize));
 			}
 			y++;
 		}
 		x++;
+	}
+}
+
+void Map::CreateFromImage(const sf::Image& image)
+{
+	grid.clear();
+	grid = std::vector(image.getSize().x, std::vector(image.getSize().y, 0));
+	for (size_t x = 0; x < grid.size(); x++)
+	{
+		for (size_t y = 0; y < grid[x].size(); y++)
+		{
+			sf::Color color = image.getPixel(x, y);
+			if (color == sf::Color::Black)
+				grid[x][y] = 1;
+
+		}
 	}
 }
