@@ -6,6 +6,7 @@
 Map map(16.0f);
 Camera camera(320.0f);
 
+const float movementspeed = 200.0f;
 void Begin(const sf::Window& window)
 {
 	for (auto& file : std::filesystem::directory_iterator("./resouces/textures/"))
@@ -26,7 +27,13 @@ void Begin(const sf::Window& window)
 
 void Update(float deltaTime)
 {
-
+	float move = movementspeed;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
+		move *= 2;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+		camera.position.x += move * deltaTime;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+		camera.position.x -= move * deltaTime;
 }
 
 void Render(Renderer& renderer)
