@@ -2,11 +2,12 @@
 #include "Resouces.h"
 #include "Map.h"
 #include <filesystem>
+#include "Mario.h"
 
 Map map(16.0f);
 Camera camera(320.0f);
+Mario mario;
 
-const float movementspeed = 200.0f;
 void Begin(const sf::Window& window)
 {
 	for (auto& file : std::filesystem::directory_iterator("./resouces/textures/"))
@@ -20,20 +21,15 @@ void Begin(const sf::Window& window)
 	}
 	sf::Image image;
 	image.loadFromFile("map.png");
-	map.CreateFromImage(image);
+	mario.position = map.CreateFromImage(image);
 	//map.CreateCheckerboard(10, 10);
-	camera.position = sf::Vector2f(160.0f, 160.0f);
+	//camera.position = sf::Vector2f(160.0f, 160.0f);
 }
 
 void Update(float deltaTime)
 {
-	float move = movementspeed;
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
-		move *= 2;
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-		camera.position.x += move * deltaTime;
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-		camera.position.x -= move * deltaTime;
+	mario.Update(deltaTime);
+	camera.position = mario.position;	
 }
 
 void Render(Renderer& renderer)

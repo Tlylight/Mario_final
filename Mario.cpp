@@ -24,6 +24,7 @@ int main()
 #include "game.h"
 #include "camera.h"
 #include "renderer.h"
+#include "Mario.h"
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(1200, 900), "Mario World");
@@ -50,4 +51,16 @@ int main()
         window.display();
 
     }
+}
+
+const float movementspeed = 200.0f;
+void Mario::Update(float deltaTime)
+{
+    float move = movementspeed;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
+        move *= 2;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        position.x += move * deltaTime;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        position.x -= move * deltaTime;
 }

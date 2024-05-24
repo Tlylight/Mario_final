@@ -42,10 +42,11 @@ void Map::Draw(Renderer& renderer)
 	}
 }
 
-void Map::CreateFromImage(const sf::Image& image)
+sf::Vector2f Map::CreateFromImage(const sf::Image& image)
 {
 	grid.clear();
 	grid = std::vector(image.getSize().x, std::vector(image.getSize().y, 0));
+	sf::Vector2f MarioPosition;
 	for (size_t x = 0; x < grid.size(); x++)
 	{
 		for (size_t y = 0; y < grid[x].size(); y++)
@@ -53,7 +54,10 @@ void Map::CreateFromImage(const sf::Image& image)
 			sf::Color color = image.getPixel(x, y);
 			if (color == sf::Color::Black)
 				grid[x][y] = 1;
+			else if (color == sf::Color::Red)
+				MarioPosition = sf::Vector2f(cellsize * x + cellsize / 2.0f, cellsize * y + cellsize / 2.0f);
 
 		}
 	}
+	return MarioPosition;
 }
