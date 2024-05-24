@@ -35,4 +35,5 @@ void Update(float deltaTime)
 void Render(Renderer& renderer)
 {
 	map.Draw(renderer);
+	mario.Draw(renderer);
 }

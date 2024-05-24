@@ -25,6 +25,7 @@ int main()
 #include "camera.h"
 #include "renderer.h"
 #include "Mario.h"
+#include "Resouces.h"
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(1200, 900), "Mario World");
@@ -63,4 +64,14 @@ void Mario::Update(float deltaTime)
         position.x += move * deltaTime;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
         position.x -= move * deltaTime;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+        position.y -= move * deltaTime;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+        position.y += move * deltaTime;
+}
+
+void Mario::Draw(Renderer& renderer)
+{
+    renderer.Draw(Resouces::textures["idle.png"], position,
+        sf::Vector2f(16.0f, 32.0f));
 }

@@ -151,6 +151,7 @@
     <ClInclude Include="Resouces.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="idle.png" />
     <Image Include="map.png" />
     <Image Include="yuki.jpeg" />
   </ItemGroup>
