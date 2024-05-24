@@ -31,7 +31,7 @@ int main()
     sf::RenderWindow window(sf::VideoMode(1200, 900), "Mario World");
     sf::Clock deltaClock;
     Renderer renderer(window);
-    
+    window.setFramerateLimit(60);
     Begin(window);
     while (window.isOpen()) 
     {
@@ -55,6 +55,9 @@ int main()
 }
 
 const float movementspeed = 200.0f;
+void Mario::Begin()
+{
+}
 void Mario::Update(float deltaTime)
 {
     float move = movementspeed;
